@@ -1,0 +1,5 @@
+{
+  "name": "Commander",
+  "description": "A native macOS dictation app using local AI for fast, accurate, and private voice-to-text transcription.",
+  "requestFramePermissions": []
+}
