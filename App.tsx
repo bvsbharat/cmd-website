@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
@@ -12,8 +13,8 @@ const AppleLogo = ({ className }: { className?: string }) => (
 );
 
 const AppIcon = ({ className }: { className?: string }) => (
-  <div className={`bg-black rounded-lg flex items-center justify-center ${className}`}>
-    <span className="text-white font-mono font-bold leading-none select-none text-[15px]">&gt;_</span>
+  <div className={`bg-brand-accent rounded-lg flex items-center justify-center ${className}`}>
+    <span className="text-black font-mono font-bold leading-none select-none text-[15px]">&gt;_</span>
   </div>
 );
 
@@ -25,30 +26,30 @@ function App() {
   return (
     <div className="min-h-screen bg-brand-bg text-gray-900 selection:bg-black selection:text-white font-sans">
       
-      {/* Floating Pill Navbar */}
+      {/* Fully Glass Floating Pill Navbar - Adjusted for white background visibility */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-2xl">
-        <div className="bg-white/80 backdrop-blur-xl border border-gray-200/50 shadow-sm rounded-full px-6 py-2 flex items-center justify-between">
+        <div className="bg-white/40 backdrop-blur-2xl border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.06)] rounded-full px-6 py-2 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div 
               onClick={() => setView('home')}
-              className="flex items-center gap-2.5 group cursor-pointer"
+              className="flex items-center gap-2 group cursor-pointer"
             >
-               <AppIcon className="w-8 h-8 shadow-sm group-hover:scale-105 transition-transform" />
-               <span className="text-sm font-bold tracking-tight text-black">Commander</span>
+               <AppIcon className="w-8 h-8 shadow-sm group-hover:scale-105 transition-transform shrink-0" />
+               <span className="text-2xl font-hand text-black leading-none mt-1 drop-shadow-sm">commander</span>
             </div>
-            <div className="hidden md:flex gap-6 text-[13px] text-gray-500 font-medium">
-              <a href="https://github.com/bvsbharat/Commander-" target="_blank" className="hover:text-black transition-colors">GitHub</a>
+            <div className="hidden md:flex gap-6 text-[13px] text-black/60 font-medium">
+              <a href="https://github.com/bvsbharat/Commander-" target="_blank" className="hover:text-black transition-colors drop-shadow-sm">GitHub</a>
               <button 
                 onClick={() => setView('docs')}
-                className={`${view === 'docs' ? 'text-black' : 'text-gray-500'} hover:text-black transition-colors`}
+                className={`${view === 'docs' ? 'text-black font-bold' : 'text-black/60'} hover:text-black transition-colors drop-shadow-sm`}
               >
                 Documentation
               </button>
-              <a href="#" className="hover:text-black transition-colors">Changelog</a>
+              <a href="#" className="hover:text-black transition-colors drop-shadow-sm">Changelog</a>
             </div>
           </div>
           
-          <button className="bg-black text-white text-[12px] font-bold px-4 py-1.5 rounded-full flex items-center gap-2 hover:bg-gray-800 transition-all shadow-sm">
+          <button className="bg-black text-white text-[12px] font-bold px-4 py-1.5 rounded-full flex items-center gap-2 hover:bg-gray-800 transition-all shadow-lg">
             <AppleLogo className="w-3 h-3" />
             Download
           </button>
