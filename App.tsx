@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
-import { Hero } from './components/Hero';
+import React, { useState, useEffect } from 'react';
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
+import { ChevronDown, User } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Hero, DemoSection } from './components/Hero';
 import { Features } from './components/Features';
 import { Footer } from './components/Footer';
 import { Documentation } from './components/Documentation';
@@ -20,14 +23,14 @@ const CommanderIcon = ({ className }: { className?: string }) => (
         <stop offset="100%" stopColor="#4B5563" />
       </linearGradient>
     </defs>
-    
+
     {/* Side Tabs for Mini Logo */}
     <rect x="0" y="40" width="6" height="20" rx="2" fill="#76D695" />
     <rect x="94" y="40" width="6" height="20" rx="2" fill="#76D695" />
 
     <rect x="8" y="8" width="84" height="84" rx="18" fill="url(#metal-bezel-nav)" />
     <rect x="18" y="18" width="64" height="64" rx="12" fill="#000000" />
-    
+
     <g stroke="#76D695" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M35 40 L45 50 L35 60" />
       <path d="M65 40 L55 50 L65 60" />
@@ -40,57 +43,166 @@ type View = 'home' | 'docs' | 'about';
 
 function App() {
   const [view, setView] = useState<View>('home');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Left side logic: Dark text if scrolled OR not on home page
+  // On Home (Top): Text White (Left side is Black)
+  const isLogoTextDark = isScrolled || view !== 'home';
+
+  // Right side logic: Always Dark text (Gray or Black)
+  // On Home (Top): Text Gray (Right side is White)
+  // On Other (Top): Text Gray
+  // On Scrolled: Text Black
+  // const isMenuTextDark = true; // This variable is not directly used in the provided snippet, following the snippet's logic.
 
   return (
     <div className="min-h-screen bg-brand-bg text-gray-900 selection:bg-black selection:text-white font-sans">
-      
-      {/* Fully Glass Floating Pill Navbar - Adjusted for white background visibility */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-2xl">
-        <div className="bg-white/40 backdrop-blur-2xl border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.06)] rounded-full px-6 py-2 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <div 
-              onClick={() => setView('home')}
-              className="flex items-center gap-2 group cursor-pointer"
+
+      {/* Top Navigation Bar */}
+      <motion.nav
+        initial={false}
+        animate={{
+          top: isScrolled ? '1.5rem' : '0rem',
+          width: isScrolled ? '90%' : '100%',
+          maxWidth: isScrolled ? '64rem' : '100%',
+          borderRadius: isScrolled ? '9999px' : '0px',
+          // Changed to light glass (white with opacity)
+          backgroundColor: isScrolled ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0)',
+          backdropFilter: isScrolled ? 'blur(20px)' : 'blur(0px)',
+          borderWidth: isScrolled ? '1px' : '0px',
+          // Subtle dark border for the light pill
+          borderColor: isScrolled ? 'rgba(0,0,0,0.05)' : 'rgba(0,0,0,0)',
+          boxShadow: isScrolled ? '0 20px 40px -4px rgba(0, 0, 0, 0.1)' : 'none',
+          paddingTop: isScrolled ? '0.75rem' : '1.5rem',
+          paddingBottom: isScrolled ? '0.75rem' : '1.5rem',
+          left: isScrolled ? '50%' : '0%',
+          x: isScrolled ? '-50%' : '0%'
+        }}
+        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }} // iOS fluid easing
+        className="fixed z-[10000]"
+      >
+        <div className={`w-full flex items-center justify-between transition-all duration-500 ${isScrolled ? 'px-6' : 'px-6 lg:px-20'
+          }`}>
+          {/* Left: Logo and App Name */}
+          <div
+            onClick={() => setView('home')}
+            className="flex items-center gap-2.5 group cursor-pointer"
+          >
+            <CommanderIcon className={`transition-all duration-300 shrink-0 ${isScrolled ? 'w-8 h-8' : 'w-8 h-8 group-hover:scale-105'}`} />
+            <motion.span
+              layout
+              className={`font-robotic leading-none drop-shadow-sm transition-colors duration-300 ${isScrolled ? 'text-base' : 'text-lg'} ${isLogoTextDark ? 'text-black' : 'text-white'}`}
             >
-               <CommanderIcon className="w-8 h-8 shadow-sm group-hover:scale-105 transition-transform shrink-0" />
-               <span className="text-2xl font-robotic font-normal text-black leading-none mt-1 drop-shadow-sm">SuperAgents</span>
-            </div>
-            <div className="hidden md:flex gap-6 text-[13px] text-black/60 font-medium">
-              <button 
+              SuperAgents
+            </motion.span>
+            <motion.span
+              layout
+              className={`ml-1 text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-full tracking-wide transition-colors duration-300 ${isLogoTextDark
+                ? 'bg-black text-white'
+                : 'bg-white text-black'
+                }`}
+            >
+              BETA
+            </motion.span>
+          </div>
+
+          {/* Right: Menu Items */}
+          <div className="flex items-center gap-6">
+            <div className={`hidden md:flex gap-6 text-[13px] font-medium transition-colors duration-300 ${isScrolled ? 'text-black' : 'text-gray-600'}`}>
+              <button
                 onClick={() => setView('docs')}
-                className={`${view === 'docs' ? 'text-black font-bold' : 'text-black/60'} hover:text-black transition-colors drop-shadow-sm`}
+                className={`${view === 'docs' ? 'font-bold' : ''} hover:text-black transition-colors`}
               >
                 Documentation
               </button>
-              <button 
+              <button
                 onClick={() => setView('about')}
-                className={`${view === 'about' ? 'text-black font-bold' : 'text-black/60'} hover:text-black transition-colors drop-shadow-sm`}
+                className={`${view === 'about' ? 'font-bold' : ''} hover:text-black transition-colors`}
               >
                 About
               </button>
-              <a href="#" className="hover:text-black transition-colors drop-shadow-sm">Changelog</a>
+              <a href="#" className="hover:text-black transition-colors">Changelog</a>
+              <a href="#" className="hover:text-black transition-colors">Download</a>
+            </div>
+            <div className={`flex items-center gap-3 transition-colors duration-300 ${isScrolled ? 'text-black' : 'text-gray-600'}`}>
+              <button className="text-[12px] font-medium hover:text-black transition-colors flex items-center gap-0.5">
+                EN
+                <ChevronDown className="w-3 h-3" />
+              </button>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className={`w-8 h-8 rounded-full border flex items-center justify-center transition-colors cursor-pointer ${isScrolled
+                    ? 'border-gray-300 hover:border-gray-900 hover:bg-white/50'
+                    : 'border-gray-300 hover:border-gray-900 hover:bg-gray-100'
+                    }`}>
+                    <User className="w-4 h-4" />
+                  </button>
+                </SignInButton>
+              </SignedOut>
+              <SignedOut>
+                <SignUpButton mode="modal">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`text-[12px] font-semibold px-4 py-2 rounded-full transition-colors flex items-center gap-1.5 bg-black text-white hover:bg-gray-800 cursor-pointer`}
+                  >
+                    Join Us
+                  </motion.button>
+                </SignUpButton>
+              </SignedOut>
             </div>
           </div>
-          
-          <button className="bg-black text-white text-[12px] font-bold px-4 py-1.5 rounded-full flex items-center gap-2 hover:bg-gray-800 transition-all shadow-lg">
-            <AppleLogo className="w-3 h-3" />
-            Download
-          </button>
         </div>
-      </nav>
+      </motion.nav>
 
       <main className="relative">
-        {view === 'home' ? (
-          <div className="animate-in fade-in duration-500">
-            <Hero />
-            <Features />
-            <Pricing />
-          </div>
-        ) : view === 'docs' ? (
-          <Documentation />
-        ) : (
-          <About />
-        )}
+        <AnimatePresence mode="wait">
+          {view === 'home' ? (
+            <motion.div
+              key="home"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Hero />
+              <DemoSection />
+              <Features />
+              <Pricing />
+            </motion.div>
+          ) : view === 'docs' ? (
+            <motion.div
+              key="docs"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Documentation />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="about"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+            >
+              <About />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
 
       <Footer />

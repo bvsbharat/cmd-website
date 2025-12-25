@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { 
-  Terminal, Wifi, Battery, Bot, Sparkles, CheckCircle2, 
-  Moon, Mail, AppWindow, Command, Globe, 
-  Lock, ChevronLeft, ChevronRight, RefreshCw, 
-  Send, Paperclip, Image as ImageIcon, Smile, 
+import {
+  Terminal, Wifi, Battery, Bot, Sparkles, CheckCircle2,
+  Moon, Mail, AppWindow, Command, Globe,
+  Lock, ChevronLeft, ChevronRight, RefreshCw,
+  Send, Paperclip, Image as ImageIcon, Smile,
   Trash2, FileText, Folder, FileImage,
-  MoreVertical
+  MoreVertical, Mouse
 } from 'lucide-react';
 
 const AppleLogo = ({ className }: { className?: string }) => (
@@ -30,7 +30,7 @@ const CommanderIcon = ({ className }: { className?: string }) => (
         </feMerge>
       </filter>
     </defs>
-    
+
     {/* Side Tabs */}
     <rect x="0" y="38" width="8" height="24" rx="3" fill="#76D695" />
     <rect x="92" y="38" width="8" height="24" rx="3" fill="#76D695" />
@@ -38,11 +38,11 @@ const CommanderIcon = ({ className }: { className?: string }) => (
     {/* Metallic Outer Frame */}
     <rect x="10" y="10" width="80" height="80" rx="20" fill="url(#metal-bezel)" />
     <rect x="12" y="12" width="76" height="76" rx="18" fill="white" fillOpacity="0.1" />
-    
+
     {/* Inner Screen */}
     <rect x="18" y="18" width="64" height="64" rx="14" fill="#000000" />
     <rect x="18" y="18" width="64" height="64" rx="14" fill="white" fillOpacity="0.05" />
-    
+
     {/* Glyph Face: > < and - */}
     <g stroke="#76D695" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" filter="url(#green-glow)">
       {/* Left Eye > */}
@@ -124,7 +124,7 @@ const ChromeGmailDraft = () => (
         <div className="py-4 text-sm text-gray-700 leading-relaxed font-sans">
           <p className="mb-4">Hi Alex,</p>
           <p className="mb-4">I noticed your recent announcement regarding the Series A funding and wanted to reach out. We've been following your progress and believe there's a great synergy between our platforms...</p>
-          <p>Best,<br/>SuperAgents AI Assistant</p>
+          <p>Best,<br />SuperAgents AI Assistant</p>
         </div>
       </div>
       <div className="mt-8 flex items-center gap-4 pt-4 border-t border-gray-100">
@@ -174,18 +174,18 @@ const DesktopIcon: React.FC<{ item: typeof DesktopItems[0] }> = ({ item }) => {
         ) : isFolder ? (
           <div className="text-sky-500 drop-shadow-sm">
             <svg viewBox="0 0 24 24" className="w-12 h-12 fill-current">
-               <path d="M20 18H4V8h16v10zm-2-12H6v2h12V6z" opacity=".2"/>
-               <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+              <path d="M20 18H4V8h16v10zm-2-12H6v2h12V6z" opacity=".2" />
+              <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
             </svg>
           </div>
         ) : isImage ? (
-           <div className="w-10 h-12 bg-white/80 rounded border border-white/20 flex flex-col items-center justify-center overflow-hidden">
-              <FileImage className="w-6 h-6 text-gray-400" />
-           </div>
+          <div className="w-10 h-12 bg-white/80 rounded border border-white/20 flex flex-col items-center justify-center overflow-hidden">
+            <FileImage className="w-6 h-6 text-gray-400" />
+          </div>
         ) : (
-           <div className="w-10 h-12 bg-white/90 rounded-sm border border-white/20 flex items-center justify-center">
-              <FileText className="w-6 h-6 text-gray-500" />
-           </div>
+          <div className="w-10 h-12 bg-white/90 rounded-sm border border-white/20 flex items-center justify-center">
+            <FileText className="w-6 h-6 text-gray-500" />
+          </div>
         )}
       </div>
       <span className="text-[10px] font-sans font-semibold text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] text-center line-clamp-2 px-1 rounded-sm transition-all group-hover:bg-blue-600/60">
@@ -196,31 +196,120 @@ const DesktopIcon: React.FC<{ item: typeof DesktopItems[0] }> = ({ item }) => {
 };
 
 export const Hero: React.FC = () => {
+  return (
+    <section className="relative w-full min-h-screen flex items-stretch overflow-hidden bg-white">
+      {/* Left Side - Dark Content */}
+      <div className="w-full lg:w-1/2 bg-black px-12 lg:px-20 pt-24 pb-16 lg:pt-32 lg:pb-24 flex flex-col justify-center relative overflow-hidden">
+
+        <div className="relative z-10 max-w-xl">
+          <p className="text-lg text-gray-500 font-sans mb-4">
+            Optimus 1.0
+          </p>
+
+          <h1 className="text-5xl lg:text-6xl xl:text-7xl font-sans font-bold text-white leading-[1.1] mb-8">
+            Jarvis Finally Real—Your Autonomous AI Agent in Action.
+          </h1>
+
+          <p className="text-lg lg:text-xl text-gray-400 font-sans leading-relaxed mb-10 max-w-md">
+            An assistant that works in the background, executing native commands with the flick of a voice.
+          </p>
+
+          <div className="flex flex-row items-center gap-4 mb-10">
+            <button className="bg-white text-black px-8 py-4 rounded-full font-semibold text-base hover:bg-gray-200 transition-colors">
+              Download now
+            </button>
+            <button className="text-white px-8 py-4 rounded-full font-semibold text-base border border-gray-600 hover:bg-white/10 transition-colors">
+              Try it now!
+            </button>
+          </div>
+
+          <p className="text-sm text-gray-500 font-sans tracking-wide">
+            macOS 14.0+ • UNIVERSAL APP
+          </p>
+        </div>
+      </div>
+
+      {/* Right Side - Light Background with Icon */}
+      <div className="hidden lg:flex w-1/2 bg-gray-50 items-center justify-center px-12 pt-32 pb-24 relative">
+        <div className="relative group flex items-center gap-10">
+          {/* App Icon */}
+          <div className="flex flex-col items-center gap-6">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-300 via-brand-accent to-emerald-400 blur-[80px] opacity-40 scale-125"></div>
+              <div className="relative w-[450px] h-[450px] rounded-[60px] overflow-hidden">
+                <img
+                  src="/assets/images/app-icon/hero-app.png"
+                  alt="SuperAgents App Icon"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <p className="text-lg text-gray-400 font-sans font-medium tracking-wide">
+              Optimus 1.0
+            </p>
+          </div>
+          {/* Version Indicators - Vertical on Right */}
+          <div className="flex flex-col items-center gap-4 h-56 justify-between select-none">
+            <p className="text-[10px] text-gray-400 font-mono font-medium">01</p>
+            <div className="w-8 flex-1 bg-white rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col items-center justify-center gap-3 py-4">
+              <div className="w-3.5 h-3.5 rounded-full border-[1.5px] border-gray-800 flex items-center justify-center p-0.5">
+                <div className="w-full h-full bg-gray-800 rounded-full"></div>
+              </div>
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-300/80"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-300/80"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-300/80"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-300/80"></div>
+            </div>
+            <p className="text-[10px] text-gray-400 font-mono font-medium">05</p>
+          </div>
+        </div>
+
+        <div className="absolute bottom-12 right-12 flex items-center gap-2 text-sm text-gray-400 font-mono">
+          <Mouse className="w-4 h-4" />
+          <span>//scroll_to_start_mouse</span>
+        </div>
+      </div>
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(20px, -20px) scale(1.05); }
+        }
+        .animate-float {
+          animation: float 10s ease-in-out infinite;
+        }
+      `}} />
+    </section>
+  );
+};
+
+export const DemoSection: React.FC = () => {
   const [phase, setPhase] = useState(0);
   const [focusMode, setFocusMode] = useState(false);
   const [showIcons, setShowIcons] = useState(true);
-  
+
   const commands = [
-    { 
-      prompt: "Open Gmail and draft a pitch email to Alex", 
-      cmd: "open -a 'Google Chrome' --args 'https://mail.google.com'", 
-      output: "Drafted personalized pitch for Alex Chen in Gmail.", 
+    {
+      prompt: "Open Gmail and draft a pitch email to Alex",
+      cmd: "open -a 'Google Chrome' --args 'https://mail.google.com'",
+      output: "Drafted personalized pitch for Alex Chen in Gmail.",
       icon: Mail,
-      action: () => { setFocusMode(false); setShowIcons(true); } 
+      action: () => { setFocusMode(false); setShowIcons(true); }
     },
-    { 
-      prompt: "Hide my desktop icons", 
-      cmd: "killall Finder", 
-      output: "Desktop clutter hidden. Focus mode prepared.", 
+    {
+      prompt: "Hide my desktop icons",
+      cmd: "killall Finder",
+      output: "Desktop clutter hidden. Focus mode prepared.",
       icon: AppWindow,
-      action: () => setShowIcons(false) 
+      action: () => setShowIcons(false)
     },
-    { 
-      prompt: "Enter deep work mode", 
-      cmd: "open -a 'SuperAgents' --focus", 
-      output: "Distractions silenced. Desktop tint applied.", 
+    {
+      prompt: "Enter deep work mode",
+      cmd: "open -a 'SuperAgents' --focus",
+      output: "Distractions silenced. Desktop tint applied.",
       icon: Command,
-      action: () => setFocusMode(true) 
+      action: () => setFocusMode(true)
     }
   ];
 
@@ -247,168 +336,146 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="flex flex-col items-center mb-4 text-center max-w-4xl relative z-10">
-        {/* App Icon with Gradient Backdrop */}
-        <div className="relative mb-8 group flex flex-col items-center gap-3">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-green-300 via-brand-accent to-emerald-400 blur-3xl opacity-40 scale-110 group-hover:opacity-60 transition-opacity duration-500"></div>
-            <div className="relative w-32 h-32 rounded-[28px] overflow-hidden group-hover:scale-105 transition-transform duration-300">
-              <img 
-                src="/assets/images/app-icon/hero-app.png" 
-                alt="SuperAgents App Icon" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          <h2 className="text-2xl font-robotic font-normal text-black">Optimus 1.0</h2>
-        </div>
-
-        <p className="text-xl text-brand-accent mb-10 font-sans font-medium">
-          Jarvis Finally Real—Your Autonomous AI Agent in Action.
+        <p className="text-2xl text-gray-800 font-bold leading-relaxed tracking-tight mb-12">
+          An assistant that works in the background, executing native commands with the flick of a voice.
         </p>
-
-        <div className="flex flex-col sm:flex-row items-center gap-4 mb-4 relative z-10">
-          <button className="bg-black text-white px-10 py-4 rounded-2xl flex items-center gap-3 font-bold text-base shadow-2xl hover:scale-105 transition-transform active:scale-95">
-             <AppleLogo className="w-5 h-5" />
-             Download now
-          </button>
-        </div>
-        <span className="text-[10px] font-mono text-gray-400 uppercase tracking-widest mb-6">macOS 14.0+ • UNIVERSAL APP</span>
       </div>
 
       <div className="relative w-full max-w-5xl perspective-1000 mt-2 group z-20">
-          <div className="absolute top-[-85px] left-[62%] hidden md:flex flex-col items-start pointer-events-none z-[60]">
-             <span className="font-hand text-3xl font-bold text-black ml-12 rotate-[5deg] whitespace-nowrap drop-shadow-sm">Try it now!</span>
-             <TryItArrow className="w-24 h-14 text-gray-200 -mt-2 -ml-2 drop-shadow-sm" />
+        <div className="absolute top-[-85px] left-[62%] hidden md:flex flex-col items-start pointer-events-none z-[60]">
+          <span className="font-hand text-3xl font-bold text-black ml-12 rotate-[5deg] whitespace-nowrap drop-shadow-sm">Try it now!</span>
+          <TryItArrow className="w-24 h-14 text-gray-200 -mt-2 -ml-2 drop-shadow-sm" />
+        </div>
+
+        <div className="relative rounded-3xl overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 aspect-[16/10] ring-1 ring-black/5">
+          <div className="absolute inset-0 -z-10 transition-all duration-1000 overflow-hidden">
+            <img
+              src="https://wallpapercave.com/wp/wp12201600.jpg"
+              alt="macOS Wallpaper"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 opacity-[0.1] pointer-events-none mix-blend-overlay" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 aspect-[16/10] ring-1 ring-black/5">
-              <div className="absolute inset-0 -z-10 transition-all duration-1000 overflow-hidden">
-                <img 
-                  src="https://wallpapercave.com/wp/wp12201600.jpg" 
-                  alt="macOS Wallpaper" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 opacity-[0.1] pointer-events-none mix-blend-overlay" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
+          {/* Enhanced Desktop Grid */}
+          <div className={`absolute inset-0 p-12 pt-16 transition-all duration-1000 z-10 flex flex-wrap content-start items-start justify-end gap-x-4 gap-y-12 ${showIcons ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12 max-w-[340px] pointer-events-auto">
+              {DesktopItems.map((item, i) => (
+                <DesktopIcon key={i} item={item} />
+              ))}
+            </div>
+          </div>
+
+          <div className={`absolute inset-0 bg-blue-900/10 backdrop-blur-3xl z-30 transition-opacity duration-1000 flex items-center justify-center pointer-events-none ${focusMode ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="absolute inset-0 bg-black/5" />
+            <div className="relative z-10 text-white flex flex-col items-center gap-6 animate-in fade-in zoom-in-90 duration-700">
+              <Moon className="w-24 h-24 mb-2 text-white/60 drop-shadow-2xl" strokeWidth={1} />
+              <span className="text-4xl font-sans font-light tracking-[0.3em] uppercase drop-shadow-xl text-white/80">ZEN MODE</span>
+            </div>
+          </div>
+
+          {/* Toolbar updated with white text and glass effect */}
+          <div className="absolute top-0 left-0 right-0 h-8 flex items-center justify-between px-4 bg-black/10 backdrop-blur-3xl z-40 border-b border-white/10">
+            <div className="flex items-center gap-3 text-white text-[11px] font-bold drop-shadow-sm">
+              <AppleLogo className="w-3 h-3 fill-current" />
+              <span>SuperAgents</span>
+              <span className="opacity-70 font-medium">File</span>
+              <span className="opacity-70 font-medium">Agent</span>
+              <span className="opacity-70 font-medium">Window</span>
+            </div>
+            <div className="flex items-center gap-4 text-white text-[11px] font-bold drop-shadow-sm">
+              <Wifi className="w-3.5 h-3.5" />
+              <div className="flex items-center gap-1">
+                <Battery className="w-3.5 h-3.5 rotate-90" />
+                <span className="text-[9px]">84%</span>
+              </div>
+              <span className="opacity-80 font-mono">Mon 10:24 AM</span>
+            </div>
+          </div>
+
+          {/* Interaction Notch - Reverted to balanced sizing */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-500">
+            <div className={`bg-black rounded-b-[1.75rem] px-5 py-2.5 flex items-center shadow-[0_15px_40px_rgba(0,0,0,0.3)] transition-all justify-center border-x border-b border-white/5 ${phase === 1 || phase === 2 ? 'min-w-[340px] gap-4' : 'min-w-[120px] gap-3'}`}>
+              {/* Brand Icon Container in Notch */}
+              <div className="w-9 h-9 bg-[#1a1a1a] rounded-xl flex items-center justify-center border border-white/10 shadow-inner group-hover:scale-105 transition-transform">
+                <CommanderIcon className="w-6 h-6 shrink-0" />
               </div>
 
-              {/* Enhanced Desktop Grid */}
-              <div className={`absolute inset-0 p-12 pt-16 transition-all duration-1000 z-10 flex flex-wrap content-start items-start justify-end gap-x-4 gap-y-12 ${showIcons ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12 max-w-[340px] pointer-events-auto">
-                   {DesktopItems.map((item, i) => (
-                      <DesktopIcon key={i} item={item} />
-                   ))}
-                </div>
-              </div>
+              <div className="flex items-center justify-start flex-1 overflow-hidden">
+                {phase === 0 && (
+                  <div className="flex items-center gap-2 opacity-30 ml-2">
+                    <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                    <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                    <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                  </div>
+                )}
 
-              <div className={`absolute inset-0 bg-blue-900/10 backdrop-blur-3xl z-30 transition-opacity duration-1000 flex items-center justify-center pointer-events-none ${focusMode ? 'opacity-100' : 'opacity-0'}`}>
-                 <div className="absolute inset-0 bg-black/5" />
-                 <div className="relative z-10 text-white flex flex-col items-center gap-6 animate-in fade-in zoom-in-90 duration-700">
-                    <Moon className="w-24 h-24 mb-2 text-white/60 drop-shadow-2xl" strokeWidth={1} />
-                    <span className="text-4xl font-sans font-light tracking-[0.3em] uppercase drop-shadow-xl text-white/80">ZEN MODE</span>
-                 </div>
-              </div>
-
-              {/* Toolbar updated with white text and glass effect */}
-              <div className="absolute top-0 left-0 right-0 h-8 flex items-center justify-between px-4 bg-black/10 backdrop-blur-3xl z-40 border-b border-white/10">
-                 <div className="flex items-center gap-3 text-white text-[11px] font-bold drop-shadow-sm">
-                    <AppleLogo className="w-3 h-3 fill-current" />
-                    <span>SuperAgents</span>
-                    <span className="opacity-70 font-medium">File</span>
-                    <span className="opacity-70 font-medium">Agent</span>
-                    <span className="opacity-70 font-medium">Window</span>
-                 </div>
-                 <div className="flex items-center gap-4 text-white text-[11px] font-bold drop-shadow-sm">
-                    <Wifi className="w-3.5 h-3.5" />
-                    <div className="flex items-center gap-1">
-                      <Battery className="w-3.5 h-3.5 rotate-90" />
-                      <span className="text-[9px]">84%</span>
+                {(phase === 1 || phase === 2) && (
+                  <div className="flex items-center gap-4 w-full animate-in fade-in duration-300 overflow-hidden">
+                    <div className="flex-1 overflow-hidden">
+                      <p className="text-white/90 font-sans font-medium text-[10px] tracking-tight truncate leading-tight">
+                        {phase === 1 ? commands[currentIdx].prompt : "Analyzing system..."}
+                      </p>
                     </div>
-                    <span className="opacity-80 font-mono">Mon 10:24 AM</span>
-                 </div>
-              </div>
-
-              {/* Interaction Notch - Reverted to balanced sizing */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-500">
-                  <div className={`bg-black rounded-b-[1.75rem] px-5 py-2.5 flex items-center shadow-[0_15px_40px_rgba(0,0,0,0.3)] transition-all justify-center border-x border-b border-white/5 ${phase === 1 || phase === 2 ? 'min-w-[340px] gap-4' : 'min-w-[120px] gap-3'}`}>
-                      {/* Brand Icon Container in Notch */}
-                      <div className="w-9 h-9 bg-[#1a1a1a] rounded-xl flex items-center justify-center border border-white/10 shadow-inner group-hover:scale-105 transition-transform">
-                        <CommanderIcon className="w-6 h-6 shrink-0" />
+                    {phase === 1 && (
+                      <div className="flex items-center gap-1 h-3.5 shrink-0 pr-1">
+                        {[0.3, 0.8, 0.4, 0.6, 0.2].map((h, i) => (
+                          <div key={i} className="w-[1.5px] bg-brand-accent rounded-full animate-bounce"
+                            style={{
+                              height: `${h * 12}px`,
+                              animationDelay: `${i * 0.1}s`
+                            }}
+                          ></div>
+                        ))}
                       </div>
-                      
-                      <div className="flex items-center justify-start flex-1 overflow-hidden">
-                          {phase === 0 && (
-                            <div className="flex items-center gap-2 opacity-30 ml-2">
-                              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                            </div>
-                          )}
-                          
-                          {(phase === 1 || phase === 2) && (
-                            <div className="flex items-center gap-4 w-full animate-in fade-in duration-300 overflow-hidden">
-                                <div className="flex-1 overflow-hidden">
-                                  <p className="text-white/90 font-sans font-medium text-[10px] tracking-tight truncate leading-tight">
-                                    {phase === 1 ? commands[currentIdx].prompt : "Analyzing system..."}
-                                  </p>
-                                </div>
-                                {phase === 1 && (
-                                  <div className="flex items-center gap-1 h-3.5 shrink-0 pr-1">
-                                    {[0.3, 0.8, 0.4, 0.6, 0.2].map((h, i) => (
-                                        <div key={i} className="w-[1.5px] bg-brand-accent rounded-full animate-bounce" 
-                                          style={{
-                                            height: `${h * 12}px`,
-                                            animationDelay: `${i * 0.1}s`
-                                          }}
-                                        ></div>
-                                    ))}
-                                  </div>
-                                )}
-                                {phase === 2 && <Sparkles className="w-3.5 h-3.5 text-brand-accent shrink-0 animate-pulse" />}
-                            </div>
-                          )}
-
-                          {phase === 3 && (
-                            <div className="flex items-center gap-2 text-green-400 animate-in zoom-in-50 duration-300">
-                              <CheckCircle2 className="w-4 h-4" />
-                              <span className="text-[9px] font-mono font-bold tracking-[0.1em] uppercase opacity-70">Verified</span>
-                            </div>
-                          )}
-                      </div>
+                    )}
+                    {phase === 2 && <Sparkles className="w-3.5 h-3.5 text-brand-accent shrink-0 animate-pulse" />}
                   </div>
-              </div>
+                )}
 
-              <div className="absolute inset-0 flex items-center justify-center pt-16 z-30 pointer-events-none">
-                 {phase === 3 && currentIdx === 0 && <ChromeGmailDraft />}
-              </div>
-
-              <div className="absolute bottom-12 left-0 right-0 px-12 z-40">
-                  <div className={`mx-auto max-w-lg bg-black/40 backdrop-blur-3xl rounded-[2.2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.2)] flex items-center p-4 gap-5 transition-all duration-700 transform ${phase === 3 ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                      <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 shadow-lg">
-                        {phase === 3 && React.createElement(commands[currentIdx].icon, { className: "w-6 h-6 text-brand-accent" })}
-                      </div>
-                      <div className="flex-1 overflow-hidden">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="text-[9px] font-mono font-black text-white/40 uppercase tracking-widest">Action Performed</span>
-                          <span className="text-[9px] font-mono font-bold text-brand-accent/60 truncate max-w-[120px] font-mono">$ {commands[currentIdx].cmd.substring(0, 30)}...</span>
-                        </div>
-                        <p className="text-white font-sans font-bold text-sm tracking-tight leading-none truncate">
-                          {commands[currentIdx].output}
-                        </p>
-                      </div>
-                      <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500/30 shrink-0">
-                        <CheckCircle2 className="w-4 h-4 text-green-400" />
-                      </div>
+                {phase === 3 && (
+                  <div className="flex items-center gap-2 text-green-400 animate-in zoom-in-50 duration-300">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span className="text-[9px] font-mono font-bold tracking-[0.1em] uppercase opacity-70">Verified</span>
                   </div>
+                )}
               </div>
-
-              {/* Focus Glow Overlay */}
-              <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-1000 ${phase === 1 ? 'opacity-30' : 'opacity-0'}`}>
-                 <div className="w-80 h-80 bg-brand-accent/10 rounded-full blur-[120px] animate-pulse"></div>
-              </div>
+            </div>
           </div>
+
+          <div className="absolute inset-0 flex items-center justify-center pt-16 z-30 pointer-events-none">
+            {phase === 3 && currentIdx === 0 && <ChromeGmailDraft />}
+          </div>
+
+          <div className="absolute bottom-12 left-0 right-0 px-12 z-40">
+            <div className={`mx-auto max-w-lg bg-black/40 backdrop-blur-3xl rounded-[2.2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.2)] flex items-center p-4 gap-5 transition-all duration-700 transform ${phase === 3 ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 shadow-lg">
+                {phase === 3 && React.createElement(commands[currentIdx].icon, { className: "w-6 h-6 text-brand-accent" })}
+              </div>
+              <div className="flex-1 overflow-hidden">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[9px] font-mono font-black text-white/40 uppercase tracking-widest">Action Performed</span>
+                  <span className="text-[9px] font-mono font-bold text-brand-accent/60 truncate max-w-[120px] font-mono">$ {commands[currentIdx].cmd.substring(0, 30)}...</span>
+                </div>
+                <p className="text-white font-sans font-bold text-sm tracking-tight leading-none truncate">
+                  {commands[currentIdx].output}
+                </p>
+              </div>
+              <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500/30 shrink-0">
+                <CheckCircle2 className="w-4 h-4 text-green-400" />
+              </div>
+            </div>
+          </div>
+
+          {/* Focus Glow Overlay */}
+          <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-1000 ${phase === 1 ? 'opacity-30' : 'opacity-0'}`}>
+            <div className="w-80 h-80 bg-brand-accent/10 rounded-full blur-[120px] animate-pulse"></div>
+          </div>
+        </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes shimmer {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(200%); }
@@ -422,17 +489,11 @@ export const Hero: React.FC = () => {
         }
       `}} />
 
-      <div className="max-w-5xl w-full text-center mt-12 mb-32 space-y-12 relative z-10">
-          <div className="max-w-xl mx-auto space-y-6">
-            <p className="text-2xl text-gray-800 font-bold leading-relaxed tracking-tight">An assistant that works in the background, executing native commands with the flick of a voice.</p>
-          </div>
-          
-          <div className="absolute bottom-0 right-0 md:mb-[-40px] hidden md:block select-none pointer-events-none transform hover:rotate-[5deg] transition-transform duration-700">
-             <div className="font-hand text-4xl md:text-5xl text-black leading-tight">
-               Agentic AI.<br/>
-               <span className="ml-8 italic text-gray-400 underline decoration-brand-accent/30 underline-offset-8">Not just chat.</span>
-             </div>
-          </div>
+      <div className="absolute bottom-0 right-0 md:mb-[-40px] hidden md:block select-none pointer-events-none transform hover:rotate-[5deg] transition-transform duration-700 z-10">
+        <div className="font-hand text-4xl md:text-5xl text-black leading-tight">
+          Agentic AI.<br />
+          <span className="ml-8 italic text-gray-400 underline decoration-brand-accent/30 underline-offset-8">Not just chat.</span>
+        </div>
       </div>
     </section>
   );
