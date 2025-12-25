@@ -25,7 +25,6 @@ export const Footer: React.FC = () => {
 
         <div className="flex flex-col items-center gap-6">
             <div className="flex gap-8 text-[13px] text-gray-400 font-medium">
-                <a href="https://github.com/bvsbharat/Commander-" target="_blank" className="hover:text-black transition-colors">GitHub</a>
                 <a href="#" className="hover:text-black transition-colors">Documentation</a>
                 <a href="#" className="hover:text-black transition-colors">MIT License</a>
             </div>

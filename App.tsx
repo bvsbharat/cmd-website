@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
@@ -12,10 +11,28 @@ const AppleLogo = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const AppIcon = ({ className }: { className?: string }) => (
-  <div className={`bg-brand-accent rounded-lg flex items-center justify-center ${className}`}>
-    <span className="text-black font-mono font-bold leading-none select-none text-[15px]">&gt;_</span>
-  </div>
+const CommanderIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <defs>
+      <linearGradient id="metal-bezel-nav" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#E5E7EB" />
+        <stop offset="100%" stopColor="#4B5563" />
+      </linearGradient>
+    </defs>
+    
+    {/* Side Tabs for Mini Logo */}
+    <rect x="0" y="40" width="6" height="20" rx="2" fill="#76D695" />
+    <rect x="94" y="40" width="6" height="20" rx="2" fill="#76D695" />
+
+    <rect x="8" y="8" width="84" height="84" rx="18" fill="url(#metal-bezel-nav)" />
+    <rect x="18" y="18" width="64" height="64" rx="12" fill="#000000" />
+    
+    <g stroke="#76D695" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M35 40 L45 50 L35 60" />
+      <path d="M65 40 L55 50 L65 60" />
+      <path d="M45 70 L55 70" />
+    </g>
+  </svg>
 );
 
 type View = 'home' | 'docs';
@@ -34,11 +51,10 @@ function App() {
               onClick={() => setView('home')}
               className="flex items-center gap-2 group cursor-pointer"
             >
-               <AppIcon className="w-8 h-8 shadow-sm group-hover:scale-105 transition-transform shrink-0" />
+               <CommanderIcon className="w-8 h-8 shadow-sm group-hover:scale-105 transition-transform shrink-0" />
                <span className="text-2xl font-hand text-black leading-none mt-1 drop-shadow-sm">commander</span>
             </div>
             <div className="hidden md:flex gap-6 text-[13px] text-black/60 font-medium">
-              <a href="https://github.com/bvsbharat/Commander-" target="_blank" className="hover:text-black transition-colors drop-shadow-sm">GitHub</a>
               <button 
                 onClick={() => setView('docs')}
                 className={`${view === 'docs' ? 'text-black font-bold' : 'text-black/60'} hover:text-black transition-colors drop-shadow-sm`}
@@ -62,19 +78,6 @@ function App() {
             <Hero />
             <Features />
             <Pricing />
-            
-            {/* Installation Section */}
-            <section className="py-24 px-4 max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold mb-8 text-center">Installation</h2>
-              <div className="bg-black rounded-3xl p-10 text-white font-mono text-sm shadow-2xl relative overflow-hidden group">
-                <div className="absolute top-6 right-8 text-gray-600 uppercase text-[10px] tracking-widest font-bold">Terminal</div>
-                <p className="text-gray-400 mb-4 opacity-60"># Install via Homebrew</p>
-                <div className="flex items-center gap-3 group-hover:text-brand-accent transition-colors">
-                  <span className="text-brand-accent">$</span>
-                  <code className="flex-1 text-base">brew tap bvsbharat/commander && brew install --cask commander</code>
-                </div>
-              </div>
-            </section>
           </div>
         ) : (
           <Documentation />

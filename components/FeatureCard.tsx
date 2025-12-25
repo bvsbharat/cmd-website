@@ -10,13 +10,13 @@ export const FeatureCard: React.FC<Feature> = ({ title, description, icon: Icon,
 
       <div className="relative z-10 flex flex-col h-full">
         <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-black/5 group-hover:bg-brand-accent/20 transition-colors duration-300">
-          <Icon className="w-6 h-6 text-amber-600" />
+          <Icon className="w-6 h-6 text-brand-accent" />
         </div>
         
         <h3 className="text-xl font-bold text-gray-900 mb-2 font-mono flex items-center gap-2 transition-colors">
           {title}
           {isNew && (
-            <span className="text-[10px] uppercase tracking-wider bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">
+            <span className="text-[10px] uppercase tracking-wider bg-brand-accent/10 text-brand-accent px-2 py-0.5 rounded-full border border-brand-accent/20">
               New
             </span>
           )}

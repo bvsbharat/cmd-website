@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { 
   Terminal, Wifi, Battery, Bot, Sparkles, CheckCircle2, 
@@ -12,6 +11,47 @@ import {
 const AppleLogo = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+  </svg>
+);
+
+const CommanderIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <defs>
+      <linearGradient id="metal-bezel" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#E5E7EB" />
+        <stop offset="50%" stopColor="#9CA3AF" />
+        <stop offset="100%" stopColor="#4B5563" />
+      </linearGradient>
+      <filter id="green-glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    
+    {/* Side Tabs */}
+    <rect x="0" y="38" width="8" height="24" rx="3" fill="#76D695" />
+    <rect x="92" y="38" width="8" height="24" rx="3" fill="#76D695" />
+
+    {/* Metallic Outer Frame */}
+    <rect x="10" y="10" width="80" height="80" rx="20" fill="url(#metal-bezel)" />
+    <rect x="12" y="12" width="76" height="76" rx="18" fill="white" fillOpacity="0.1" />
+    
+    {/* Inner Screen */}
+    <rect x="18" y="18" width="64" height="64" rx="14" fill="#000000" />
+    <rect x="18" y="18" width="64" height="64" rx="14" fill="white" fillOpacity="0.05" />
+    
+    {/* Glyph Face: > < and - */}
+    <g stroke="#76D695" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" filter="url(#green-glow)">
+      {/* Left Eye > */}
+      <path d="M32 38 L42 48 L32 58" />
+      {/* Right Eye < */}
+      <path d="M68 38 L58 48 L68 58" />
+      {/* Mouth - */}
+      <path d="M44 68 L56 68" />
+    </g>
   </svg>
 );
 
@@ -116,7 +156,12 @@ const DesktopItems = [
   { type: 'doc', name: 'Budget.xls' },
 ];
 
-const DesktopIcon = ({ item }: { item: typeof DesktopItems[0] }) => {
+/**
+ * Updated to match native macOS desktop icons:
+ * - White text with dark drop shadow for legibility.
+ * - Removed background pill for a cleaner, native look.
+ */
+const DesktopIcon: React.FC<{ item: typeof DesktopItems[0] }> = ({ item }) => {
   const isApp = item.type === 'app';
   const isFolder = item.type === 'folder';
   const isImage = item.type === 'image';
@@ -143,7 +188,7 @@ const DesktopIcon = ({ item }: { item: typeof DesktopItems[0] }) => {
            </div>
         )}
       </div>
-      <span className="text-[9px] font-sans font-medium text-gray-800 drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)] text-center line-clamp-2 px-1 rounded-sm bg-white/40 group-hover:bg-blue-600/40 transition-colors">
+      <span className="text-[10px] font-sans font-semibold text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] text-center line-clamp-2 px-1 rounded-sm transition-all group-hover:bg-blue-600/60">
         {item.name}
       </span>
     </div>
@@ -230,7 +275,7 @@ export const Hero: React.FC = () => {
           <div className="relative rounded-3xl overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 aspect-[16/10] ring-1 ring-black/5">
               <div className="absolute inset-0 -z-10 transition-all duration-1000 overflow-hidden">
                 <img 
-                  src="https://dynamicwallpaper.club/landing-vids/1.png" 
+                  src="https://wallpapercave.com/wp/wp12201600.jpg" 
                   alt="macOS Wallpaper" 
                   className="w-full h-full object-cover"
                 />
@@ -254,15 +299,16 @@ export const Hero: React.FC = () => {
                  </div>
               </div>
 
-              <div className="absolute top-0 left-0 right-0 h-8 flex items-center justify-between px-4 bg-white/20 backdrop-blur-2xl z-40 border-b border-black/5">
-                 <div className="flex items-center gap-3 text-gray-900 text-[11px] font-bold">
+              {/* Toolbar updated with white text and glass effect */}
+              <div className="absolute top-0 left-0 right-0 h-8 flex items-center justify-between px-4 bg-black/10 backdrop-blur-3xl z-40 border-b border-white/10">
+                 <div className="flex items-center gap-3 text-white text-[11px] font-bold drop-shadow-sm">
                     <AppleLogo className="w-3 h-3 fill-current" />
                     <span>Commander</span>
-                    <span className="opacity-60 font-medium">File</span>
-                    <span className="opacity-60 font-medium">Agent</span>
-                    <span className="opacity-60 font-medium">Window</span>
+                    <span className="opacity-70 font-medium">File</span>
+                    <span className="opacity-70 font-medium">Agent</span>
+                    <span className="opacity-70 font-medium">Window</span>
                  </div>
-                 <div className="flex items-center gap-4 text-gray-900 text-[11px] font-bold">
+                 <div className="flex items-center gap-4 text-white text-[11px] font-bold drop-shadow-sm">
                     <Wifi className="w-3.5 h-3.5" />
                     <div className="flex items-center gap-1">
                       <Battery className="w-3.5 h-3.5 rotate-90" />
@@ -272,52 +318,50 @@ export const Hero: React.FC = () => {
                  </div>
               </div>
 
-              {/* Interaction Notch - Shorter as requested */}
+              {/* Interaction Notch - Reverted to balanced sizing */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-500">
-                  <div className={`bg-black rounded-b-[1.75rem] px-5 py-2.5 flex items-center gap-4 shadow-[0_15px_40px_rgba(0,0,0,0.3)] transition-all justify-center border-x border-b border-white/5 ${phase === 1 || phase === 2 ? 'min-w-[320px]' : 'min-w-[100px]'}`}>
-                      {/* Brand Icon in Notch - Replaced generic bot with app logo iconography */}
-                      <div className="w-7 h-7 rounded-lg bg-brand-accent flex items-center justify-center shadow-inner shrink-0 overflow-hidden">
-                         <span className={`text-black font-mono font-bold text-[13px] mt-[-1px] select-none ${phase === 1 || phase === 2 ? 'animate-pulse' : ''}`}>
-                            &gt;_
-                         </span>
+                  <div className={`bg-black rounded-b-[1.75rem] px-5 py-2.5 flex items-center shadow-[0_15px_40px_rgba(0,0,0,0.3)] transition-all justify-center border-x border-b border-white/5 ${phase === 1 || phase === 2 ? 'min-w-[340px] gap-4' : 'min-w-[120px] gap-3'}`}>
+                      {/* Brand Icon Container in Notch */}
+                      <div className="w-9 h-9 bg-[#1a1a1a] rounded-xl flex items-center justify-center border border-white/10 shadow-inner group-hover:scale-105 transition-transform">
+                        <CommanderIcon className="w-6 h-6 shrink-0" />
                       </div>
                       
                       <div className="flex items-center justify-start flex-1 overflow-hidden">
                           {phase === 0 && (
-                            <div className="flex items-center gap-1.5 opacity-20">
-                              <div className="w-1 h-1 bg-white rounded-full"></div>
-                              <div className="w-1 h-1 bg-white rounded-full"></div>
-                              <div className="w-1 h-1 bg-white rounded-full"></div>
+                            <div className="flex items-center gap-2 opacity-30 ml-2">
+                              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                             </div>
                           )}
                           
                           {(phase === 1 || phase === 2) && (
-                            <div className="flex items-center gap-3 w-full animate-in fade-in duration-300 overflow-hidden">
+                            <div className="flex items-center gap-4 w-full animate-in fade-in duration-300 overflow-hidden">
                                 <div className="flex-1 overflow-hidden">
                                   <p className="text-white/90 font-sans font-medium text-[10px] tracking-tight truncate leading-tight">
-                                    {phase === 1 ? commands[currentIdx].prompt : "Analyzing system state..."}
+                                    {phase === 1 ? commands[currentIdx].prompt : "Analyzing system..."}
                                   </p>
                                 </div>
                                 {phase === 1 && (
-                                  <div className="flex items-center gap-1 h-3 shrink-0 pr-1">
+                                  <div className="flex items-center gap-1 h-3.5 shrink-0 pr-1">
                                     {[0.3, 0.8, 0.4, 0.6, 0.2].map((h, i) => (
                                         <div key={i} className="w-[1.5px] bg-brand-accent rounded-full animate-bounce" 
                                           style={{
-                                            height: `${h * 10}px`,
+                                            height: `${h * 12}px`,
                                             animationDelay: `${i * 0.1}s`
                                           }}
                                         ></div>
                                     ))}
                                   </div>
                                 )}
-                                {phase === 2 && <Sparkles className="w-3 h-3 text-brand-accent shrink-0 animate-pulse" />}
+                                {phase === 2 && <Sparkles className="w-3.5 h-3.5 text-brand-accent shrink-0 animate-pulse" />}
                             </div>
                           )}
 
                           {phase === 3 && (
                             <div className="flex items-center gap-2 text-green-400 animate-in zoom-in-50 duration-300">
                               <CheckCircle2 className="w-4 h-4" />
-                              <span className="text-[9px] font-mono font-bold tracking-widest uppercase opacity-60">Verified</span>
+                              <span className="text-[9px] font-mono font-bold tracking-[0.1em] uppercase opacity-70">Verified</span>
                             </div>
                           )}
                       </div>
@@ -348,6 +392,7 @@ export const Hero: React.FC = () => {
                   </div>
               </div>
 
+              {/* Focus Glow Overlay */}
               <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-1000 ${phase === 1 ? 'opacity-30' : 'opacity-0'}`}>
                  <div className="w-80 h-80 bg-brand-accent/10 rounded-full blur-[120px] animate-pulse"></div>
               </div>
