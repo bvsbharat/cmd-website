@@ -3,6 +3,7 @@ import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { Footer } from './components/Footer';
 import { Documentation } from './components/Documentation';
+import { About } from './components/About';
 import { Pricing } from './components/Pricing';
 
 const AppleLogo = ({ className }: { className?: string }) => (
@@ -35,7 +36,7 @@ const CommanderIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-type View = 'home' | 'docs';
+type View = 'home' | 'docs' | 'about';
 
 function App() {
   const [view, setView] = useState<View>('home');
@@ -52,7 +53,7 @@ function App() {
               className="flex items-center gap-2 group cursor-pointer"
             >
                <CommanderIcon className="w-8 h-8 shadow-sm group-hover:scale-105 transition-transform shrink-0" />
-               <span className="text-2xl font-hand text-black leading-none mt-1 drop-shadow-sm">commander</span>
+               <span className="text-2xl font-robotic font-normal text-black leading-none mt-1 drop-shadow-sm">SuperAgents</span>
             </div>
             <div className="hidden md:flex gap-6 text-[13px] text-black/60 font-medium">
               <button 
@@ -60,6 +61,12 @@ function App() {
                 className={`${view === 'docs' ? 'text-black font-bold' : 'text-black/60'} hover:text-black transition-colors drop-shadow-sm`}
               >
                 Documentation
+              </button>
+              <button 
+                onClick={() => setView('about')}
+                className={`${view === 'about' ? 'text-black font-bold' : 'text-black/60'} hover:text-black transition-colors drop-shadow-sm`}
+              >
+                About
               </button>
               <a href="#" className="hover:text-black transition-colors drop-shadow-sm">Changelog</a>
             </div>
@@ -79,8 +86,10 @@ function App() {
             <Features />
             <Pricing />
           </div>
-        ) : (
+        ) : view === 'docs' ? (
           <Documentation />
+        ) : (
+          <About />
         )}
       </main>
 

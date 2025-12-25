@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
             </div>
             
             <p className="text-[11px] text-gray-400 font-medium tracking-tight">
-               &copy; 2025 Commander AI. All rights reserved. Notarized by Apple.
+               &copy; 2025 SuperAgents AI. All rights reserved. Notarized by Apple.
             </p>
         </div>
     </footer>

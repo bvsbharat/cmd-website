@@ -11,7 +11,7 @@ const features: Feature[] = [
   },
   {
     title: "Jarvis Memory Layer",
-    description: "Commander remembers who Sarah is, your occupation, and project context to make commands relevant.",
+    description: "SuperAgents remembers who Sarah is, your occupation, and project context to make commands relevant.",
     icon: Brain,
     isNew: true
   },
@@ -55,11 +55,26 @@ const features: Feature[] = [
 
 export const Features: React.FC = () => {
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-transparent border-y border-black/5 relative transition-colors duration-300">
+    <section className="pt-10 pb-32 px-4 sm:px-6 lg:px-8 bg-transparent border-y border-black/5 relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
+          {/* App Icon with Name */}
+          <div className="flex flex-col items-center gap-3 mb-8">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-300 via-brand-accent to-emerald-400 blur-3xl opacity-40 scale-110 group-hover:opacity-60 transition-opacity duration-500"></div>
+              <div className="relative w-20 h-20 rounded-[18px] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="/assets/images/app-icon/hero-app.png" 
+                  alt="Optimus App Icon" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <h2 className="text-xl font-robotic font-normal text-black">Optimus 1.0</h2>
+          </div>
+          
           <h2 className="text-sm font-semibold text-gray-400 tracking-widest uppercase mb-3 font-mono">Capabilities</h2>
-          <h3 className="text-3xl md:text-5xl font-sans font-bold text-gray-900 transition-colors tracking-tight">The ultimate Mac assistant</h3>
+          <h3 className="text-3xl md:text-5xl font-sans font-bold text-gray-900 transition-colors tracking-tight">The ultimate Agent</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

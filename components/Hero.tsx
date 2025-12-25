@@ -124,7 +124,7 @@ const ChromeGmailDraft = () => (
         <div className="py-4 text-sm text-gray-700 leading-relaxed font-sans">
           <p className="mb-4">Hi Alex,</p>
           <p className="mb-4">I noticed your recent announcement regarding the Series A funding and wanted to reach out. We've been following your progress and believe there's a great synergy between our platforms...</p>
-          <p>Best,<br/>Commander AI Assistant</p>
+          <p>Best,<br/>SuperAgents AI Assistant</p>
         </div>
       </div>
       <div className="mt-8 flex items-center gap-4 pt-4 border-t border-gray-100">
@@ -217,7 +217,7 @@ export const Hero: React.FC = () => {
     },
     { 
       prompt: "Enter deep work mode", 
-      cmd: "open -a 'Commander' --focus", 
+      cmd: "open -a 'SuperAgents' --focus", 
       output: "Distractions silenced. Desktop tint applied.", 
       icon: Command,
       action: () => setFocusMode(true) 
@@ -247,13 +247,22 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="flex flex-col items-center mb-4 text-center max-w-4xl relative z-10">
-        <div className="flex flex-row items-center gap-8 mb-4 relative">
-          <h1 className="text-8xl md:text-9xl lg:text-[10rem] font-hand text-brand-accent select-none tracking-tight leading-none pt-6 drop-shadow-sm">
-            commander
-          </h1>
+        {/* App Icon with Gradient Backdrop */}
+        <div className="relative mb-8 group flex flex-col items-center gap-3">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-300 via-brand-accent to-emerald-400 blur-3xl opacity-40 scale-110 group-hover:opacity-60 transition-opacity duration-500"></div>
+            <div className="relative w-32 h-32 rounded-[28px] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+              <img 
+                src="/assets/images/app-icon/hero-app.png" 
+                alt="SuperAgents App Icon" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <h2 className="text-2xl font-robotic font-normal text-black">Optimus 1.0</h2>
         </div>
-        
-        <p className="text-xl text-gray-500 mb-10 font-medium">
+
+        <p className="text-xl text-brand-accent mb-10 font-sans font-medium">
           Jarvis Finally Real—Your Autonomous AI Agent in Action.
         </p>
 
@@ -303,7 +312,7 @@ export const Hero: React.FC = () => {
               <div className="absolute top-0 left-0 right-0 h-8 flex items-center justify-between px-4 bg-black/10 backdrop-blur-3xl z-40 border-b border-white/10">
                  <div className="flex items-center gap-3 text-white text-[11px] font-bold drop-shadow-sm">
                     <AppleLogo className="w-3 h-3 fill-current" />
-                    <span>Commander</span>
+                    <span>SuperAgents</span>
                     <span className="opacity-70 font-medium">File</span>
                     <span className="opacity-70 font-medium">Agent</span>
                     <span className="opacity-70 font-medium">Window</span>
@@ -413,7 +422,7 @@ export const Hero: React.FC = () => {
         }
       `}} />
 
-      <div className="max-w-5xl w-full text-center mt-24 mb-32 space-y-12 relative z-10">
+      <div className="max-w-5xl w-full text-center mt-12 mb-32 space-y-12 relative z-10">
           <div className="max-w-xl mx-auto space-y-6">
             <p className="text-2xl text-gray-800 font-bold leading-relaxed tracking-tight">An assistant that works in the background, executing native commands with the flick of a voice.</p>
           </div>

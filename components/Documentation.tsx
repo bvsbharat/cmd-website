@@ -24,12 +24,12 @@ const sections = [
     content: (
       <div className="space-y-6">
         <p className="text-gray-600 leading-relaxed">
-          Commander is an agentic AI assistant designed specifically for macOS. Unlike traditional chatbots, Commander is deeply integrated into the operating system, allowing it to perform real actions like sending emails, managing files, and controlling system settings through voice and vision.
+          SuperAgents is an agentic AI assistant designed specifically for macOS. Unlike traditional chatbots, SuperAgents is deeply integrated into the operating system, allowing it to perform real actions like sending emails, managing files, and controlling system settings through voice and vision.
         </p>
         <div className="bg-brand-accent/10 border border-brand-accent/20 rounded-2xl p-6 flex gap-4">
           <Info className="w-6 h-6 text-brand-accent shrink-0" />
           <p className="text-sm text-gray-700">
-            <strong>Pro Tip:</strong> Use <kbd className="bg-white px-1.5 py-0.5 rounded border shadow-sm font-mono text-xs">Cmd + Shift + C</kbd> to activate Commander from anywhere.
+            <strong>Pro Tip:</strong> Use <kbd className="bg-white px-1.5 py-0.5 rounded border shadow-sm font-mono text-xs">Cmd + Shift + C</kbd> to activate SuperAgents from anywhere.
           </p>
         </div>
       </div>
@@ -42,13 +42,13 @@ const sections = [
     content: (
       <div className="space-y-6">
         <h3 className="text-xl font-bold">Installation</h3>
-        <p className="text-gray-600">The easiest way to install Commander is via Homebrew:</p>
+        <p className="text-gray-600">The easiest way to install SuperAgents is via Homebrew:</p>
         <div className="bg-black rounded-xl p-4 font-mono text-sm text-white group relative">
-          <code className="text-brand-accent">$</code> brew tap bvsbharat/commander && brew install --cask commander
+          <code className="text-brand-accent">$</code> brew tap bvsbharat/superagents && brew install --cask superagents
         </div>
         <h3 className="text-xl font-bold mt-8">First Run</h3>
         <p className="text-gray-600">
-          On first launch, macOS will ask for Accessibility and Screen Recording permissions. These are required for Commander to "see" your screen and perform actions.
+          On first launch, macOS will ask for Accessibility and Screen Recording permissions. These are required for SuperAgents to "see" your screen and perform actions.
         </p>
       </div>
     )
@@ -65,7 +65,7 @@ const sections = [
           </div>
           <h4 className="font-bold mb-2">Agentic Execution</h4>
           <p className="text-sm text-gray-500 leading-relaxed">
-            Commander translates natural language into executable Shell or AppleScripts, automating multi-step workflows.
+            SuperAgents translates natural language into executable Shell or AppleScripts, automating multi-step workflows.
           </p>
         </div>
         <div className="border border-gray-100 rounded-2xl p-6 bg-white shadow-sm">
@@ -74,7 +74,7 @@ const sections = [
           </div>
           <h4 className="font-bold mb-2">Visual Intelligence</h4>
           <p className="text-sm text-gray-500 leading-relaxed">
-            Using OCR and Vision models, Commander can summarize long documents or explain code errors currently visible on your screen.
+            Using OCR and Vision models, SuperAgents can summarize long documents or explain code errors currently visible on your screen.
           </p>
         </div>
         <div className="border border-gray-100 rounded-2xl p-6 bg-white shadow-sm">

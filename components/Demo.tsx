@@ -75,7 +75,7 @@ export const Demo: React.FC = () => {
           <h2 className="text-sm font-semibold text-brand-accent tracking-widest uppercase mb-4 font-mono">Real-world AI Action</h2>
           <h3 className="text-4xl md:text-6xl font-sans font-bold text-white tracking-tight mb-6">Jarvis for your Mac</h3>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Commander doesn't just talk. It sees what you see, remembers what you know, and operates your apps.
+            SuperAgents doesn't just talk. It sees what you see, remembers what you know, and operates your apps.
           </p>
         </div>
 
@@ -127,7 +127,7 @@ export const Demo: React.FC = () => {
                        <div className="w-2.5 h-2.5 rounded-full bg-white/10"></div>
                        <div className="w-2.5 h-2.5 rounded-full bg-white/10"></div>
                     </div>
-                    <span className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">Commander System Interface</span>
+                    <span className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">SuperAgents System Interface</span>
                   </div>
                   <div className="flex gap-4">
                     <div className="flex items-center gap-2">

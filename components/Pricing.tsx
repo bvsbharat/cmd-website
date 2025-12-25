@@ -67,7 +67,7 @@ export const Pricing: React.FC = () => {
               </div>
               <h4 className="text-2xl font-bold text-gray-900 tracking-tight">One time opportunity.</h4>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Everyone who joins the Commander Beta today is automatically whitelisted for <strong>exclusive early-adopter pricing</strong> on the upcoming Pro plan.
+                Everyone who joins the SuperAgents Beta today is automatically whitelisted for <strong>exclusive early-adopter pricing</strong> on the upcoming Pro plan.
               </p>
             </div>
 
